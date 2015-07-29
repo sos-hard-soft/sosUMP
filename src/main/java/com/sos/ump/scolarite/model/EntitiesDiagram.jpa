@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings status="GENERATED" jaxb-support="false" id="_143819674637131" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="Files" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_143819674638234">
+        <annotation>@javax.xml.bind.annotation.XmlRootElement</annotation>
+        <jpa:table name="t_student"/>
+        <jpa:named-query name="Files.findAll">
+            <jpa:query>SELECT f FROM Files f</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Files.findByIdFiles">
+            <jpa:query>SELECT f FROM Files f WHERE f.idFile = :idFile</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Files.findByType">
+            <jpa:query>SELECT f FROM Files f WHERE f.type = :type</jpa:query>
+        </jpa:named-query>
+        <jpa:attributes>
+            <jpa:id name="idFile" attribute-type="java.lang.Long" visibile="true" id="_143819674638235">
+                <jpa:column name="id_file"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="id_file"/>
+            </jpa:id>
+            <jpa:basic name="type" optional="false" attribute-type="java.lang.String" visibile="true" id="_143819674638237">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@javax.validation.constraints.Size(min=1, max=255)</annotation>
+                <jpa:column name="type"/>
+            </jpa:basic>
+            <jpa:basic name="title" optional="false" attribute-type="java.lang.String" visibile="true" id="_143819674638238">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@javax.validation.constraints.Size(min=1, max=255)</annotation>
+                <jpa:column name="title"/>
+            </jpa:basic>
+            <jpa:basic name="description" optional="false" attribute-type="java.lang.String" visibile="true" id="_143819674638239">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@javax.validation.constraints.Size(min=1, max=255)</annotation>
+                <jpa:column name="description"/>
+            </jpa:basic>
+            <jpa:basic name="storedFile" attribute-type="byte[]" visibile="true" id="_143819674638240">
+                <jpa:column name="stored_file"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:version name="version" attribute-type="java.lang.Integer" visibile="true" id="_143819674638236">
+                <jpa:column name="version"/>
+            </jpa:version>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Student" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_143819674639241">
+        <annotation>@javax.xml.bind.annotation.XmlRootElement</annotation>
+        <jpa:table name="t_student"/>
+        <jpa:named-query name="Student.findAll">
+            <jpa:query>SELECT s FROM Student s</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Student.findByIdStudent">
+            <jpa:query>SELECT s FROM Student s WHERE s.idStudent = :idStudent</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Student.findByCne">
+            <jpa:query>SELECT s FROM Student s WHERE s.cne = :cne</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Student.findByCin">
+            <jpa:query>SELECT s FROM Student s WHERE s.cin = :cin</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Student.findByNom">
+            <jpa:query>SELECT s FROM Student s WHERE s.firstName = :firstName</jpa:query>
+        </jpa:named-query>
+        <jpa:named-query name="Student.findByDateNaissance">
+            <jpa:query>SELECT s FROM Student s WHERE s.dateOfBirth = :dateOfBirth</jpa:query>
+        </jpa:named-query>
+        <jpa:attributes>
+            <jpa:id name="idStudent" attribute-type="java.lang.Long" visibile="true" id="_143819674639242">
+                <jpa:column name="id_student"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="id_student"/>
+            </jpa:id>
+            <jpa:basic name="cne" attribute-type="java.lang.Long" visibile="true" id="_143819674639344">
+                <jpa:column name="cne"/>
+            </jpa:basic>
+            <jpa:basic name="cin" optional="false" attribute-type="java.lang.String" visibile="true" id="_143819674639345">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@javax.validation.constraints.Size(min=1, max=255)</annotation>
+                <jpa:column name="cin"/>
+            </jpa:basic>
+            <jpa:basic name="codApo" attribute-type="java.lang.Long" visibile="true" id="_143819674639346">
+                <jpa:column name="code_apogee"/>
+            </jpa:basic>
+            <jpa:basic name="firstName" optional="false" attribute-type="java.lang.String" visibile="true" id="_143819674639347">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@javax.validation.constraints.Size(min=1, max=255)</annotation>
+                <jpa:column name="f_name"/>
+            </jpa:basic>
+            <jpa:basic name="lastName1" optional="false" attribute-type="java.lang.String" visibile="true" id="_143819674639448">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@javax.validation.constraints.Size(min=1, max=255)</annotation>
+                <jpa:column name="l_name1"/>
+            </jpa:basic>
+            <jpa:basic name="lastName2" attribute-type="java.lang.String" visibile="true" id="_143819674639449">
+                <jpa:column name="l_name2" nullable="true"/>
+            </jpa:basic>
+            <jpa:basic name="f_name_ar" attribute-type="java.lang.String" visibile="true" id="_143819674639450">
+                <annotation>@javax.validation.constraints.Size(max=255)</annotation>
+                <jpa:column name="f_name_ar" nullable="true"/>
+            </jpa:basic>
+            <jpa:basic name="l_name_ar" attribute-type="java.lang.String" visibile="true" id="_143819674639451">
+                <annotation>@javax.validation.constraints.Size(max=255)</annotation>
+                <jpa:column name="l_name_ar" nullable="true"/>
+            </jpa:basic>
+            <jpa:basic name="dateOfBirth" attribute-type="java.util.Date" visibile="true" id="_143819674639452">
+                <jpa:column name="date_of_birth" nullable="true"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="birthPlace" attribute-type="java.lang.String" visibile="true" id="_143819674639453">
+                <annotation>@javax.validation.constraints.Size(max=255)</annotation>
+                <jpa:column name="birth_place" nullable="true"/>
+            </jpa:basic>
+            <jpa:basic name="phonNumber" attribute-type="java.lang.String" visibile="true" id="_143819674639454">
+                <annotation>@javax.validation.constraints.Size(max=255)</annotation>
+                <jpa:column name="phon_number" nullable="true"/>
+            </jpa:basic>
+            <jpa:basic name="adress" attribute-type="java.lang.String" visibile="true" id="_143819674639455">
+                <annotation>@javax.validation.constraints.Size(max=255)</annotation>
+                <jpa:column name="adress" nullable="true"/>
+            </jpa:basic>
+            <jpa:version name="version" attribute-type="java.lang.Integer" visibile="true" id="_143819674639343">
+                <jpa:column name="version"/>
+            </jpa:version>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_143819674637132">
+        <plane elementRef="_143819674637131" id="_143819674637133_p"/>
+    </jpa:diagram>
+</jpa:entity-mappings>

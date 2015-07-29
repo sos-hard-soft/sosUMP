@@ -7,6 +7,7 @@ package com.sos.ump.scolarite.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,13 +39,13 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "Student.findByIdStudent", query = "SELECT s FROM Student s WHERE s.idStudent = :idStudent"),
     @NamedQuery(name = "Student.findByCne", query = "SELECT s FROM Student s WHERE s.cne = :cne"),
     @NamedQuery(name = "Student.findByCin", query = "SELECT s FROM Student s WHERE s.cin = :cin"),
-    @NamedQuery(name = "Student.findByNom", query = "SELECT s FROM Student s WHERE s.nom = :nom"),
-    @NamedQuery(name = "Student.findByDateNaissance", query = "SELECT s FROM Student s WHERE s.dateNaissance = :dateNaissance")
+    @NamedQuery(name = "Student.findByNom", query = "SELECT s FROM Student s WHERE s.firstName = :firstName"),
+    @NamedQuery(name = "Student.findByDateNaissance", query = "SELECT s FROM Student s WHERE s.dateOfBirth = :dateOfBirth")
     })
 public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_student")
     private Long idStudent;
@@ -89,11 +91,17 @@ public class Student implements Serializable {
     @Column(name = "birth_place", nullable = true)
     private String birthPlace;
     @Size(max = 255)
+    @Column(name = "birth_place_ar", nullable = true)
+    private String birthPlaceAr;
+    @Size(max = 255)
     @Column(name = "phon_number", nullable = true)
     private String phonNumber;
     @Size(max = 255)
     @Column(name = "adress", nullable = true)
     private String adress;
+    
+    @OneToMany(mappedBy = "student")
+    private List<File> filesList;
 
     public Student() {
     }
