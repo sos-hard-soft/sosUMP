@@ -145,13 +145,13 @@ public class InsAdmEtp implements Serializable {
     @JoinColumns({
         @JoinColumn(name = "COD_SPE_1", referencedColumnName = "COD_SPE"),
         @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP"),
-        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI")})
+        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI", insertable=false, updatable=false)})
     @ManyToOne
     private SpeCaracteriseVdi speCaracteriseVdi;
     @JoinColumns({
         @JoinColumn(name = "COD_SPE_3", referencedColumnName = "COD_SPE"),
-        @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP"),
-        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI")})
+        @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP", insertable=false, updatable=false),
+        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI", insertable=false, updatable=false)})
     @ManyToOne
     private SpeCaracteriseVdi speCaracteriseVdi1;
     @JoinColumn(name = "COD_UTI_MOD", referencedColumnName = "COD_UTI")
@@ -159,13 +159,13 @@ public class InsAdmEtp implements Serializable {
     private Utilisateur codUtiMod;
     @JoinColumns({
         @JoinColumn(name = "COD_SPE_2", referencedColumnName = "COD_SPE"),
-        @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP"),
-        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI")})
+        @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP", insertable=false, updatable=false),
+        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI", insertable=false, updatable=false)})
     @ManyToOne
     private SpeCaracteriseVdi speCaracteriseVdi2;
     @JoinColumns({
-        @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP"),
-        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI")})
+        @JoinColumn(name = "COD_DIP", referencedColumnName = "COD_DIP", insertable=false, updatable=false),
+        @JoinColumn(name = "COD_VRS_VDI", referencedColumnName = "COD_VRS_VDI", insertable=false, updatable=false)})
     @ManyToOne
     private VersionDiplome versionDiplome1;
     @JoinColumn(name = "COD_TLS", referencedColumnName = "COD_TLS")

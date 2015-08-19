@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Files.findByIdFiles", query = "SELECT f FROM Files f WHERE f.idFile = :idFile"),
     @NamedQuery(name = "Files.findByType", query = "SELECT f FROM Files f WHERE f.type = :type")
     })
-public class File implements Serializable {
+public class Files implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,21 +73,12 @@ public class File implements Serializable {
     @Column(name = "stored_file")
     private byte[] storedFile;
     
-    @JoinColumn(name = "student", referencedColumnName = "idStudent")
-    @ManyToOne
-    private Student student;
-
-    public File() {
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
     
+
+    public Files() {
+    }
+
+   
     
 
     public Long getIdFile() {
@@ -158,7 +149,7 @@ public class File implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final File other = (File) obj;
+        final Files other = (Files) obj;
         if (!Objects.equals(this.idFile, other.idFile)) {
             return false;
         }

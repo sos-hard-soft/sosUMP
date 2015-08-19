@@ -100,9 +100,6 @@ public class Student implements Serializable {
     @Column(name = "adress", nullable = true)
     private String adress;
     
-    @OneToMany(mappedBy = "student")
-    private List<File> filesList;
-
     public Student() {
     }
 

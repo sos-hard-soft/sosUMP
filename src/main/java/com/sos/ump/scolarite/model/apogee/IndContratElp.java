@@ -119,8 +119,8 @@ public class IndContratElp implements Serializable {
     @ManyToOne(optional = false)
     private InsPedagogiEtp insPedagogiEtp;
     @JoinColumns({
-        @JoinColumn(name = "COD_LSE", referencedColumnName = "COD_LSE"),
-        @JoinColumn(name = "COD_ELP", referencedColumnName = "COD_ELP", insertable = false, updatable = false)})
+        @JoinColumn(name = "COD_LSE", referencedColumnName = "COD_LSE", insertable=false, updatable=false),
+        @JoinColumn(name = "COD_ELP", referencedColumnName = "COD_ELP", insertable=false, updatable=false)})
     @ManyToOne(optional = false)
     private LseRegroupeElp lseRegroupeElp;
     @JoinColumn(name = "COD_PEL", referencedColumnName = "COD_PEL")

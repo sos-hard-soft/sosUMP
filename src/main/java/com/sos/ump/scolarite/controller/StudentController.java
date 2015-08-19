@@ -3,6 +3,7 @@ package com.sos.ump.scolarite.controller;
 import com.sos.ump.scolarite.model.Student;
 import com.sos.ump.scolarite.controller.util.JsfUtil;
 import com.sos.ump.scolarite.controller.util.JsfUtil.PersistAction;
+import com.sos.ump.scolarite.model.apogee.Individu;
 import com.sos.ump.scolarite.service.StudentFacade;
 
 import java.io.Serializable;
@@ -27,6 +28,28 @@ public class StudentController implements Serializable {
     private com.sos.ump.scolarite.service.StudentFacade ejbFacade;
     private List<Student> items = null;
     private Student selected;
+    
+    private Individu apoStudent;
+    
+    public String showResult(){
+        String cne = apoStudent.getCodNneInd();
+        System.out.println("Le cne saisi est : " + cne);
+        
+        apoStudent = null;
+        apoStudent = new Individu();
+        apoStudent = ejbFacade.findByCne(cne);
+        System.out.println("l'eudiant est : " + apoStudent.getLibNomPatInd() + " ---- " + apoStudent.getLibPr1Ind());
+        
+        return "/student/student?faces-redirect=true";
+    }
+
+    public Individu getApoStudent() {
+        return apoStudent;
+    }
+
+    public void setApoStudent(Individu apoStudent) {
+        this.apoStudent = apoStudent;
+    }
 
     public StudentController() {
     }
