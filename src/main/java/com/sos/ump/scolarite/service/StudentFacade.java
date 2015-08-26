@@ -7,6 +7,7 @@ package com.sos.ump.scolarite.service;
 
 import com.sos.ump.scolarite.model.Student;
 import com.sos.ump.scolarite.model.apogee.Individu;
+import java.util.Objects;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -34,11 +35,18 @@ public class StudentFacade extends AbstractFacade<Student> {
     }
     
     
-    public Individu findByCne(String cne) {
+    public Individu findByCne(String cne, String cin) {
         Individu individu;
+        Individu test;
         try {
-            individu = em.createNamedQuery("Individu.findByCodNneInd", Individu.class).setParameter("cne", cne).getSingleResult();
-            return individu;
+            individu = apoem.createNamedQuery("Individu.findByCodNneInd", Individu.class).setParameter("codNneInd", cne).getSingleResult();
+            test = apoem.createNamedQuery("Individu.findByCinInd", Individu.class).setParameter("cinInd", cin).getSingleResult();
+            if (Objects.equals(individu.getCodEtu(), test.getCodEtu())) {
+            return individu;    
+            }else{
+                return null;
+            }
+            
         } catch (NoResultException ex) {
             return null;
         }

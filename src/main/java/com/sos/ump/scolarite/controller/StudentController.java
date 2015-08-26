@@ -29,17 +29,20 @@ public class StudentController implements Serializable {
     private List<Student> items = null;
     private Student selected;
     
-    private Individu apoStudent;
+    private Individu apoStudent = new Individu();
     
     public String showResult(){
         String cne = apoStudent.getCodNneInd();
-        System.out.println("Le cne saisi est : " + cne);
+        String cin = apoStudent.getCinInd();
+        System.out.println("Le cne saisi est : " + cne + " et Le cin saisi est : " + cin);
         
-        apoStudent = null;
-        apoStudent = new Individu();
-        apoStudent = ejbFacade.findByCne(cne);
+        System.out.println("Debut de la transaction DB ORACLE");
+        apoStudent = ejbFacade.findByCne(cne, cin);
+        if (apoStudent == null) {
+            System.out.println("Les données Saisi sont incorrect");
+        }else{
         System.out.println("l'eudiant est : " + apoStudent.getLibNomPatInd() + " ---- " + apoStudent.getLibPr1Ind());
-        
+        }
         return "/student/student?faces-redirect=true";
     }
 
