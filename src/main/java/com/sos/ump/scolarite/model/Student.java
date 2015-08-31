@@ -12,10 +12,12 @@ import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,6 +28,7 @@ import javax.persistence.Version;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 /**
  *
@@ -41,31 +44,32 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "Student.findByCin", query = "SELECT s FROM Student s WHERE s.cin = :cin"),
     @NamedQuery(name = "Student.findByNom", query = "SELECT s FROM Student s WHERE s.firstName = :firstName"),
     @NamedQuery(name = "Student.findByDateNaissance", query = "SELECT s FROM Student s WHERE s.dateOfBirth = :dateOfBirth")
-    })
+})
 public class Student implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_student")
     private Long idStudent;
-    
+
     @Version
-    @Column(name = "version")    
+    @Column(name = "version")
     private Integer version;
-    
+
     @Column(name = "cne")
     private Long cne;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "cin")
     private String cin;
-    
+
     @Column(name = "code_apogee")
     private Long codApo;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -86,6 +90,7 @@ public class Student implements Serializable {
     private String l_name_ar;
     @Column(name = "date_of_birth", nullable = true)
     @Temporal(TemporalType.DATE)
+    @Past
     private Date dateOfBirth;
     @Size(max = 255)
     @Column(name = "birth_place", nullable = true)
@@ -99,7 +104,11 @@ public class Student implements Serializable {
     @Size(max = 255)
     @Column(name = "adress", nullable = true)
     private String adress;
-    
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "std_fk", referencedColumnName="id_student")
+    private List<Files> filesList;
+
     public Student() {
     }
 
@@ -222,6 +231,24 @@ public class Student implements Serializable {
         this.adress = adress;
     }
 
+    public String getBirthPlaceAr() {
+        return birthPlaceAr;
+    }
+
+    public void setBirthPlaceAr(String birthPlaceAr) {
+        this.birthPlaceAr = birthPlaceAr;
+    }
+
+    public List<Files> getFilesList() {
+        return filesList;
+    }
+
+    public void setFilesList(List<Files> filesList) {
+        this.filesList = filesList;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -300,7 +327,5 @@ public class Student implements Serializable {
     public String toString() {
         return "Student : " + "cne : " + cne + ", cin : " + cin + ", codApo : " + codApo + ", firstName : " + firstName + ", lastName1 : " + lastName1 + '}';
     }
-    
-    
-    
+
 }

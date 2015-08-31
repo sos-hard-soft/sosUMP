@@ -11,16 +11,8 @@
     <h:body>
         <b:container>
             <h:form>
-            <b:row styleClass="show-grid">
-    <b:column col-xs="12" col-sm="6" col-md="8">
-        <h:outputText value="col-xs=12 col-sm=6 col-md=8"/>
-        <p:inputText value="#{studentController.apoStudent.codNneInd}" />
-    </b:column>
-    <b:column col-xs="12" col-sm="6" col-md="8">
-        <h:outputText value="col-xs=12 col-sm=6 col-md=8"/>
-        <p:inputText value="#{studentController.apoStudent.cinInd}" />
-    </b:column>
-</b:row>
+            
+
 <b:row styleClass="show-grid">
     <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
     <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
@@ -28,7 +20,7 @@
     <div class="clearfix visible-xs"></div>
     <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
 </b:row>
-                <p:commandButton value="Valider" action="#{studentController.showResult}"/>
+<p:commandButton value="Valider" action="#{studentController.showList}"/>
             </h:form>
         </b:container>
     </h:body>
