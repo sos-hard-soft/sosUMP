@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Theme Template for BootsFaces</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+    </h:head>
+    <h:body style="padding-top: 60px">
+        <h:outputScript library="holder" name="holder.js" />
+        <b:navBar brand="Project name" brandHref="#" fixed="top" inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="About" href="#about"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <b:container>
+            <b:well>
+                <h3>Bienvenu #{studentController.current.lastName1} #{studentController.current.firstName} sur votre espace Personnel</h3>
+                Les onglets si dessus contiennent les differentes informations et données vous concernant.
+            </b:well>
+            <hr/>
+            <p:tabView>
+                <p:tab title="Informations Personnelles">
+                    <h:form>
+                        <b:row styleClass="show-grid">
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="Code National de l'etudiant : #{studentController.newStudent.cne} :  الرقـم الوطني للطالب"/>
+                            </b:column>
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="Code Apogée : #{studentController.newStudent.codApo}  :  رقـم الطالب"/>
+                            </b:column>
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="CIN : #{studentController.newStudent.cin}  :رقـم بطـاقة التعريف الوطنية "/>
+                            </b:column>
+                        </b:row>
+                        
+                        <b:row styleClass="show-grid">
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="Nom : #{studentController.newStudent.firstName}"/>
+                            </b:column>
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="الإســم الـعائـلي : #{studentController.newStudent.f_name_ar}" dir="rtl"/>
+                            </b:column>
+                        </b:row>
+                        <b:row styleClass="show-grid">
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="Nom : #{studentController.newStudent.firstName}"/>
+                            </b:column>
+                            <b:column col-xs="6" col-sm="4" col-md="4">
+                                <h:outputLabel value="الإســم الشخـصـي : #{studentController.newStudent.f_name_ar}" dir="rtl"/>
+                            </b:column>
+                        </b:row>
+
+                    </h:form>
+                </p:tab>
+                <p:tab title="Information et situation Pédagogique">
+
+                </p:tab>
+                <p:tab title="Historique et résultats">
+
+                </p:tab>
+            </p:tabView>
+        </b:container>
+    </h:body>
+</html>

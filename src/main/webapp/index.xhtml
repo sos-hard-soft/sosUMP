@@ -1,27 +1,74 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-          <h:head>
-        <title>BootsFaces Basic Page</title>
+    <h:head>
+        <title>Theme Template for BootsFaces</title>
+        <meta name="author" content="Riccardo Massera"></meta>
     </h:head>
-    <h:body>
+    <h:body style="padding-top: 60px">
+        <h:outputScript library="holder" name="holder.js" />
+        <b:navBar brand="Project name" brandHref="#" fixed="top" inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="About" href="#about"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
         <b:container>
-            <h:form>
-            
+            <h1>Bienvenu sur la plateforme de création du compte Etudiant FSO</h1>
+            <p>
+                Grace a votre compte étudiant FSO, vous pouvez plustard accéder à un ensemble de service dédié a nos étudiants, comme : 
+                <ul>
+                    <li>Un compte de messagerie</li>
+                    <li>Un espace perso sur le portail intranet</li>
+                    <li>Suivi de la situation pédagogique</li>
+                    <li>Demande des etats et attestation</li>
+                </ul>
+                Pour commencer, remplissez les deux champs ci aprées avec vos numéro.
+            </p>
+            <hr/>
+            <f:view>
+                <h:form>
+                    <b:panelGrid colSpans="3,7,2">
+                        <h:outputLabel value="Code national de l'etudiant : " />
+                        <p:inputText id="cne" value="#{studentController.apoStudent.codNneInd}"/>
+                        <p:messages for="cne" />
+                        <h:outputLabel value="Carte d'identité national : " />
+                        <p:inputText id="cin" value="#{studentController.apoStudent.cinInd}"/>
+                        <p:messages for="cin" />
+                    </b:panelGrid>
+                    <b:commandButton id="valider" value="Commencer" action="#{studentController.showResult}" look="primary"/>
+                </h:form>
+            </f:view>
 
-<b:row styleClass="show-grid">
-    <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-    <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-    <!-- Optional: clear the XS cols if their content doesn't match in height -->
-    <div class="clearfix visible-xs"></div>
-    <b:column col-xs="6" col-sm="4" col-md="4"><h:outputText value="col-xs=6 col-sm=4 col-md=4"/></b:column>
-</b:row>
-<p:commandButton value="Valider" action="#{studentController.showList}"/>
-            </h:form>
+            <h1>Panels</h1>
+            <b:row>
+                <b:column col-md="8">
+                    <b:panel title="Panel title" look="primary">
+                        
+                    </b:panel>
+                </b:column>
+                
+                <b:column col-md="4">
+                    <b:panel title="Panel title" look="warning">Panel content</b:panel>
+                    <b:panel title="Panel title" look="danger">Panel content</b:panel>
+                </b:column>
+            </b:row>
+            <h1>Wells</h1>
+            <b:well>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </b:well>
+            <hr/>
         </b:container>
     </h:body>
 </html>
