@@ -1,4 +1,4 @@
-package com.sos.ump.helpers.util;
+package com.sos.helpers.util;
 
 import java.util.List;
 import javax.faces.application.FacesMessage;

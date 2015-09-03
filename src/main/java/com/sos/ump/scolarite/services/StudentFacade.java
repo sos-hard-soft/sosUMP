@@ -7,6 +7,9 @@ package com.sos.ump.scolarite.services;
 
 import com.sos.ump.scolarite.model.Student;
 import com.sos.ump.scolarite.model.apogee.Individu;
+import com.sos.ump.scolarite.model.apogee.InsAdmEtp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -48,6 +51,32 @@ public class StudentFacade extends AbstractFacade<Student> {
                 return null;
             }
             
+        } catch (NoResultException ex) {
+            return null;
+        }
+        
+    }
+    
+    public List<InsAdmEtp> findInscAdministrative(Integer codeApo){
+        Individu individu;
+        List<InsAdmEtp> inscriptions;
+        long code = 0;
+        System.out.println("Debut de la procedure de recherche");
+        /*
+        * Recherche du code individu par numéro apogee
+        */
+        
+        try {
+            individu = apoem.createNamedQuery("Individu.findByCodEtu", Individu.class).setParameter("codEtu", codeApo).getSingleResult();
+            code = individu.getCodEtu();
+            System.out.println("le code de l'etudiant est : " + code);
+        } catch (NoResultException ex) {
+        }
+        
+        try {
+            inscriptions = apoem.createNamedQuery("InsAdmEtp.findByCodInd", InsAdmEtp.class).setParameter("codInd", code).getResultList();
+            System.out.println("Recherche d'inscriptions terminer : " + inscriptions.get(0));
+            return inscriptions;
         } catch (NoResultException ex) {
             return null;
         }

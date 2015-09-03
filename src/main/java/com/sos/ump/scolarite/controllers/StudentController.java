@@ -6,9 +6,10 @@
 package com.sos.ump.scolarite.controllers;
 
 import com.sos.helpers.Casting;
-import com.sos.ump.helpers.util.JsfUtil;
+import com.sos.helpers.util.JsfUtil;
 import com.sos.ump.scolarite.model.Student;
 import com.sos.ump.scolarite.model.apogee.Individu;
+import com.sos.ump.scolarite.model.apogee.InsAdmEtp;
 import com.sos.ump.scolarite.services.StudentFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -24,18 +25,18 @@ import javax.ejb.EJBException;
  *
  * @author mabsalhi.sos
  */
-@Named(value = "studentController")
+@Named(value = "stdController")
 @SessionScoped
 public class StudentController implements Serializable {
 
     @EJB
     private StudentFacade studentService;
     
-       
+    private List<InsAdmEtp> listInscriptions;   
     
     private Casting casting = new Casting();
     
-    private Student newStudent;
+    private Student newStudent = new Student();
     private Student current;
     
     private Individu apoStudent = new Individu();
@@ -56,9 +57,13 @@ public class StudentController implements Serializable {
         if (apoStudent == null) {
             System.out.println("Les données Saisi sont incorrect");
         }else{
+            System.out.println("Recherche des inscriptions");
+            listInscriptions = studentService.findInscAdministrative(apoStudent.getCodEtu());
         System.out.println("l'eudiant est : " + apoStudent.getLibNomPatInd() + " ---- " + apoStudent.getLibPr1Ind());
             createStudentFromIndividu(apoStudent);
         }
+        
+        
         return "/student/student?faces-redirect=true";
     }
     
@@ -157,6 +162,15 @@ public class StudentController implements Serializable {
     public void setCasting(Casting casting) {
         this.casting = casting;
     }
+
+    public List<InsAdmEtp> getListInscriptions() {
+        return listInscriptions;
+    }
+
+    public void setListInscriptions(List<InsAdmEtp> listInscriptions) {
+        this.listInscriptions = listInscriptions;
+    }
+    
     
     
 }

@@ -41,13 +41,13 @@ and open the template in the editor.
                 <h:form>
                     <b:panelGrid colSpans="3,7,2">
                         <h:outputLabel value="Code national de l'etudiant : " />
-                        <p:inputText id="cne" value="#{studentController.apoStudent.codNneInd}"/>
+                        <p:inputText id="cne" value="#{stdController.apoStudent.codNneInd}"/>
                         <p:messages for="cne" />
                         <h:outputLabel value="Carte d'identité national : " />
-                        <p:inputText id="cin" value="#{studentController.apoStudent.cinInd}"/>
+                        <p:inputText id="cin" value="#{stdController.apoStudent.cinInd}"/>
                         <p:messages for="cin" />
                     </b:panelGrid>
-                    <b:commandButton id="valider" value="Commencer" action="#{studentController.showResult}" look="primary"/>
+                    <b:commandButton id="valider" value="Commencer" action="#{stdController.showResult}" look="primary"/>
                 </h:form>
             </f:view>
 
