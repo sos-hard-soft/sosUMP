@@ -58,7 +58,7 @@ public class StudentController implements Serializable {
             System.out.println("Les données Saisi sont incorrect");
         }else{
             System.out.println("Recherche des inscriptions");
-            listInscriptions = studentService.findInscAdministrative(apoStudent.getCodEtu());
+            listInscriptions = studentService.findInscAdministrative(apoStudent.getCodEtu());            
         System.out.println("l'eudiant est : " + apoStudent.getLibNomPatInd() + " ---- " + apoStudent.getLibPr1Ind());
             createStudentFromIndividu(apoStudent);
         }

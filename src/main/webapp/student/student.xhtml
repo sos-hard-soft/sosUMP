@@ -77,239 +77,76 @@ and open the template in the editor.
 
 
                         <h:form>
-                            <h1><h:outputText value="List"/></h1>
-                            <h:dataTable value="#{stdController.listInscriptions}" var="item">
-                                <h:column>
+                            
+                            <h1>Récapitulaif des inscriptions Administratives aux etapes du diplome</h1>
+                            <p:dataTable value="#{stdController.listInscriptions}" var="item">
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="NumOccIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.insAdmEtpPK.numOccIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="DatCreIae"/>
+                                        <h:outputText value="Date de création de l'inscription"/>
                                     </f:facet>
                                     <h:outputText value="#{item.datCreIae}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
                                     </h:outputText>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="DatModIae"/>
+                                        <h:outputText value="Date de modification de l'inscription"/>
                                     </f:facet>
                                     <h:outputText value="#{item.datModIae}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
                                     </h:outputText>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="DatAccIae"/>
                                     </f:facet>
                                     <h:outputText value="#{item.datAccIae}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
                                     </h:outputText>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="EtaIae"/>
+                                        <h:outputText value="Etat de l'inscription"/>
                                     </f:facet>
                                     <h:outputText value="#{item.etaIae}"/>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="EtaPmtIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.etaPmtIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="NbrInsCyc"/>
+                                        <h:outputText value="Nombre d'inscriptin au cycle"/>
                                     </f:facet>
                                     <h:outputText value="#{item.nbrInsCyc}"/>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="NbrInsEtp"/>
+                                        <h:outputText value="Nombre d'inscriptin a l'etape"/>
                                     </f:facet>
                                     <h:outputText value="#{item.nbrInsEtp}"/>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="TemTlsIae"/>
+                                        <h:outputText value="Version de Diplome"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.temTlsIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="TemIaePrm"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.temIaePrm}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="TemChgSurEtp"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.temChgSurEtp}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ZblEtb1"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.zblEtb1}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ZblEtb2"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.zblEtb2}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="NumBrsEtu"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.numBrsEtu}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="LibRefAcc"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.libRefAcc}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="TemInsElpAtmqIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.temInsElpAtmqIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodNatTitAccIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codNatTitAccIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="NbrInsDip"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.nbrInsDip}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="TemDipIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.temDipIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodSesIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codSesIae}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="DatObsSisIae"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.datObsSisIae}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodBrs"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codBrs}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodCge"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codCge}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodCmp"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codCmp}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodDacAcc"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codDacAcc}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="InsAdmAnu"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.insAdmAnu}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodPru"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codPru}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="VersionDiplome"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.versionDiplome}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="SpeCaracteriseVdi"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.speCaracteriseVdi}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="SpeCaracteriseVdi1"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.speCaracteriseVdi1}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodUtiMod"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codUtiMod}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="SpeCaracteriseVdi2"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.speCaracteriseVdi2}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{item.versionDiplome.licVdi}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="VersionDiplome1"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.versionDiplome1}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{item.versionDiplome1.licVdi}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="CodTls"/>
+                                        <h:outputText value="libélé de la version d'étape"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.codTls}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{item.versionEtape.etape.libEtp}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="CodUtiAcc"/>
+                                        <h:outputText value="Code abrégé de la version d'étape"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.codUtiAcc}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="VersionEtape"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.versionEtape}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CodUti"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.codUti}"/>
-                                </h:column>
-                            </h:dataTable>
+                                    <h:outputText value="#{item.versionEtape.etape.codEtp}"/>
+                                </p:column>
+                            </p:dataTable>
                         </h:form>
                     </f:view>
 

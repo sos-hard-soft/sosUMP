@@ -68,13 +68,14 @@ public class StudentFacade extends AbstractFacade<Student> {
         
         try {
             individu = apoem.createNamedQuery("Individu.findByCodEtu", Individu.class).setParameter("codEtu", codeApo).getSingleResult();
-            code = individu.getCodEtu();
+            code = individu.getCodInd();
             System.out.println("le code de l'etudiant est : " + code);
         } catch (NoResultException ex) {
         }
         
         try {
             inscriptions = apoem.createNamedQuery("InsAdmEtp.findByCodInd", InsAdmEtp.class).setParameter("codInd", code).getResultList();
+            System.out.println("recherche frucueuse !!!");
             System.out.println("Recherche d'inscriptions terminer : " + inscriptions.get(0));
             return inscriptions;
         } catch (NoResultException ex) {
