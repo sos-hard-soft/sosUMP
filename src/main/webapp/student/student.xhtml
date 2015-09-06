@@ -44,7 +44,7 @@ and open the template in the editor.
                                 <h:outputLabel value="CIN : #{stdController.newStudent.cin}  :رقـم بطـاقة التعريف الوطنية "/>
                             </b:column>
                         </b:row>
-                        
+
                         <b:row styleClass="show-grid">
                             <b:column col-xs="6" col-sm="4" col-md="4">
                                 <h:outputLabel value="Nom : #{stdController.newStudent.firstName}"/>
@@ -64,7 +64,7 @@ and open the template in the editor.
                         <b:row styleClass="show-grid">
                             <b:column col-xs="6" col-sm="8" col-md="8">
                                 <p>Lieu et Date de naissance : #{stdController.newStudent.birthPlace}  le #{stdController.newStudent.dateOfBirth}  فــي         #{stdController.newStudent.dateOfBirth}
-                                   </p>
+                                </p>
                             </b:column>
                             <b:column col-xs="6" col-sm="4" col-md="4" offset="3">
                                 <p> تــاريـخ و مكــات الإزديــاد</p>
@@ -77,7 +77,7 @@ and open the template in the editor.
 
 
                         <h:form>
-                            
+
                             <h1>Récapitulaif des inscriptions Administratives aux etapes du diplome</h1>
                             <p:dataTable value="#{stdController.listInscriptions}" var="item">
                                 <p:column>
@@ -152,7 +152,28 @@ and open the template in the editor.
 
                 </p:tab>
                 <p:tab title="Historique et résultats">
+                    <p:dataTable var="elp" value="#{stdController.listInscription}">
+                        <f:facet name="header">
+                            Expand rows to see detailed information
+                        </f:facet>
+                        <p:column style="width:16px">
+                            <p:rowToggler />
+                        </p:column>
+                        <p:column headerText="Id">
+                            <h:outputText value="#{elp.lseRegroupeElp.elementPedagogi.libElp}" />
+                        </p:column>
+                        <p:column headerText="Year">
+                            <h:outputText value="#{elp.datCreElpCon}" />
+                        </p:column>
 
+                        <p:rowExpansion>
+                            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                                
+                                <h:outputText value="Price" />
+                                
+                            </p:panelGrid>
+                        </p:rowExpansion>
+                    </p:dataTable>
                 </p:tab>
             </p:tabView>
         </b:container>

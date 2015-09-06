@@ -8,6 +8,7 @@ package com.sos.ump.scolarite.controllers;
 import com.sos.helpers.Casting;
 import com.sos.helpers.util.JsfUtil;
 import com.sos.ump.scolarite.model.Student;
+import com.sos.ump.scolarite.model.apogee.IndContratElp;
 import com.sos.ump.scolarite.model.apogee.Individu;
 import com.sos.ump.scolarite.model.apogee.InsAdmEtp;
 import com.sos.ump.scolarite.services.StudentFacade;
@@ -32,7 +33,8 @@ public class StudentController implements Serializable {
     @EJB
     private StudentFacade studentService;
     
-    private List<InsAdmEtp> listInscriptions;   
+    private List<InsAdmEtp> listInscriptions;
+    private List<IndContratElp> listInscription;
     
     private Casting casting = new Casting();
     
@@ -59,6 +61,7 @@ public class StudentController implements Serializable {
         }else{
             System.out.println("Recherche des inscriptions");
             listInscriptions = studentService.findInscAdministrative(apoStudent.getCodEtu());            
+            listInscription = studentService.findResultForStd(apoStudent.getCodEtu());
         System.out.println("l'eudiant est : " + apoStudent.getLibNomPatInd() + " ---- " + apoStudent.getLibPr1Ind());
             createStudentFromIndividu(apoStudent);
         }
@@ -170,7 +173,14 @@ public class StudentController implements Serializable {
     public void setListInscriptions(List<InsAdmEtp> listInscriptions) {
         this.listInscriptions = listInscriptions;
     }
-    
-    
+
+    public List<IndContratElp> getListInscription() {
+        return listInscription;
+    }
+
+    public void setListInscription(List<IndContratElp> listInscription) {
+        this.listInscription = listInscription;
+    }
+
     
 }

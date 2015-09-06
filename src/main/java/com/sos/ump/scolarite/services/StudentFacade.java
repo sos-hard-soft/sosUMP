@@ -6,9 +6,9 @@
 package com.sos.ump.scolarite.services;
 
 import com.sos.ump.scolarite.model.Student;
+import com.sos.ump.scolarite.model.apogee.IndContratElp;
 import com.sos.ump.scolarite.model.apogee.Individu;
 import com.sos.ump.scolarite.model.apogee.InsAdmEtp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.Stateless;
@@ -60,22 +60,15 @@ public class StudentFacade extends AbstractFacade<Student> {
     public List<InsAdmEtp> findInscAdministrative(Integer codeApo){
         Individu individu;
         List<InsAdmEtp> inscriptions;
-        long code = 0;
+        long code = findCodeEtudiant(codeApo);
         System.out.println("Debut de la procedure de recherche");
         /*
         * Recherche du code individu par numéro apogee
         */
         
         try {
-            individu = apoem.createNamedQuery("Individu.findByCodEtu", Individu.class).setParameter("codEtu", codeApo).getSingleResult();
-            code = individu.getCodInd();
-            System.out.println("le code de l'etudiant est : " + code);
-        } catch (NoResultException ex) {
-        }
-        
-        try {
             inscriptions = apoem.createNamedQuery("InsAdmEtp.findByCodInd", InsAdmEtp.class).setParameter("codInd", code).getResultList();
-            System.out.println("recherche frucueuse !!!");
+            System.out.println("recherche fructueuse !!!");
             System.out.println("Recherche d'inscriptions terminer : " + inscriptions.get(0));
             return inscriptions;
         } catch (NoResultException ex) {
@@ -84,6 +77,29 @@ public class StudentFacade extends AbstractFacade<Student> {
         
     }
 
+    public List<IndContratElp> findResultForStd(Integer codeApo){
+        long code = findCodeEtudiant(codeApo);
+        List<IndContratElp> listInscription;
+        try {
+            listInscription = apoem.createNamedQuery("IndContratElp.findByCodInd", IndContratElp.class).setParameter("codInd", code).getResultList();
+            System.out.println("recherche fructueuse !!!");
+            System.out.println("Recherche d'inscriptions terminer : " + listInscription.get(0));
+            return listInscription;
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
     
-    
+    public long findCodeEtudiant(Integer codeApo){
+        long code = 0;
+        Individu individu;
+        try {
+            individu = apoem.createNamedQuery("Individu.findByCodEtu", Individu.class).setParameter("codEtu", codeApo).getSingleResult();
+            code = individu.getCodInd();
+            System.out.println("le code de l'etudiant est : " + code);
+        } catch (NoResultException ex) {
+        }
+        
+        return code;
+    }
 }
