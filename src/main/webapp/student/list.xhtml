@@ -37,12 +37,12 @@ and open the template in the editor.
 
                 <h:form>
                     <h1><h:outputText value="List"/></h1>
-                    <p:dataTable value="#{student.studentList}" var="item">
+                    <p:dataTable value="#{stdController.studentList}" var="item">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Cne"/>
                             </f:facet>
-                            <h:outputText value="#{item.cne}"/>
+                            <h:commandLink value="#{item.cne}" action="#{stdController.showEdit(item)}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -118,9 +118,16 @@ and open the template in the editor.
                             </f:facet>
                             <h:outputText value="#{item.birthPlaceAr}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="BirthPlaceAr"/>
+                            </f:facet>
+                            <h:outputText value="#{item.photo}"/>
+                        </p:column>
                     </p:dataTable>
                 </h:form>
             </f:view>
+
 
             <h1>Panels</h1>
             <b:row>

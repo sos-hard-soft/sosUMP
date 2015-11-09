@@ -17,7 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -104,6 +104,9 @@ public class Student implements Serializable {
     @Size(max = 255)
     @Column(name = "adress", nullable = true)
     private String adress;
+    @Lob
+    @Column(name = "photo", nullable = true)
+    private byte[] photo;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "std_fk", referencedColumnName="id_student")
@@ -246,6 +249,15 @@ public class Student implements Serializable {
     public void setFilesList(List<Files> filesList) {
         this.filesList = filesList;
     }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+    
     
     
 

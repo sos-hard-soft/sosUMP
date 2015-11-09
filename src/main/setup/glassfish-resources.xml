@@ -16,7 +16,7 @@
         <property name="portNumber" value="1521"/>
         <property name="databaseName" value="apoprod"/>
         <property name="User" value="benzekri"/>
-        <property name="Password" value="benzekri"/>
+        <property name="Password" value="wiben951"/>
         <property name="URL" value="jdbc:oracle:thin:@196.200.156.14:1521:apoprod"/>
         <property name="driverClass" value="oracle.jdbc.OracleDriver"/>
     </jdbc-connection-pool>

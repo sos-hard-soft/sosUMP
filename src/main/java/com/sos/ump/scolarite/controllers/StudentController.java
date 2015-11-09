@@ -12,15 +12,22 @@ import com.sos.ump.scolarite.model.apogee.IndContratElp;
 import com.sos.ump.scolarite.model.apogee.Individu;
 import com.sos.ump.scolarite.model.apogee.InsAdmEtp;
 import com.sos.ump.scolarite.services.StudentFacade;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
+import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -39,11 +46,11 @@ public class StudentController implements Serializable {
     private Casting casting = new Casting();
     
     private Student newStudent = new Student();
-    private Student current;
+    private Student current = new Student();
     
     private Individu apoStudent = new Individu();
     
-    private List<Student> studentList;
+    private List<Student> studentList = new ArrayList<>();
     
     /**
      * Business Methods
@@ -107,6 +114,35 @@ public class StudentController implements Serializable {
             }
     }
     
+    
+    public String doEdit(){
+        studentService.edit(current);
+        return "/student/list?faces-redirect=true";
+    }
+    
+    
+    public void handleFileUpload(FileUploadEvent event) throws IOException {
+
+        UploadedFile file = event.getFile();
+        System.out.println(file.getFileName());
+
+        byte[] foto = IOUtils.toByteArray(file.getInputstream());
+        System.out.println(foto);
+
+        current.setPhoto(foto);
+ //application code
+    }
+
+    public DefaultStreamedContent byteToImage(byte[] imgBytes) throws IOException {
+        
+             ByteArrayInputStream img = new ByteArrayInputStream(imgBytes);
+        return new DefaultStreamedContent(img, "image/jpg");
+       
+       
+    }
+    
+        
+    
     /**
      * Creates a new instance of StudentController
      */
@@ -115,7 +151,13 @@ public class StudentController implements Serializable {
     
     public String showList(){
         studentList = studentService.findAll();
-        return "student/list??faces-redirect=true";
+        System.out.println(studentList.get(0));
+        return "/student/list?faces-redirect=true";
+    }
+    
+    public String showEdit(Student student){
+        current = student;
+        return "/student/edit?faces-redirect=true";
     }
 
     public StudentFacade getStudentService() {

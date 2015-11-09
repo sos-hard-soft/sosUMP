@@ -33,6 +33,7 @@ and open the template in the editor.
             <p:tabView>
                 <p:tab title="Informations Personnelles">
                     <h:form>
+                        <b:commandButton id="edit" value="Editer mes infos" look="info" icon="plus-sign" action="#{stdController.showEdit(newStudent)}" />
                         <b:row styleClass="show-grid">
                             <b:column col-xs="6" col-sm="4" col-md="4">
                                 <h:outputLabel value="CNE : #{stdController.newStudent.cne} :  الرقـم الوطني للطالب"/>
