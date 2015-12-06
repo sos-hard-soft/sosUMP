@@ -71,14 +71,41 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>net.sf.barcode4j</groupId>
-            <artifactId>barcode4j-light</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
             <groupId>net.glxn</groupId>
             <artifactId>qrgen</artifactId>
             <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j-light</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>converter</artifactId>
+            <version>0.9.2</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>core</artifactId>
+            <version>0.9.2</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document.odt</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.freemarker</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.velocity</artifactId>
+            <version>0.9.2</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -87,11 +114,17 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-    <groupId>net.bootsfaces</groupId>
-    <artifactId>bootsfaces</artifactId>
-    <version>0.6.6</version>
-    <scope>compile</scope>
-</dependency>
+            <groupId>net.bootsfaces</groupId>
+            <artifactId>bootsfaces</artifactId>
+            <version>0.6.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

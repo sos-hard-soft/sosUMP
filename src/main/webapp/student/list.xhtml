@@ -48,13 +48,7 @@ and open the template in the editor.
                             <f:facet name="header">
                                 <h:outputText value="Cin"/>
                             </f:facet>
-                            <h:outputText value="#{item.cin}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="CodApo"/>
-                            </f:facet>
-                            <h:outputText value="#{item.codApo}"/>
+                            <h:commandLink value="#{item.cin}" action="#{stdController.showCard(item)}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -110,7 +104,7 @@ and open the template in the editor.
                             <f:facet name="header">
                                 <h:outputText value="Adress"/>
                             </f:facet>
-                            <h:outputText value="#{item.adress}"/>
+                            <p:graphicImage rendered="#{not empty item.photo}" value="#{stdController.byteToImage(item.photo)}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -118,12 +112,7 @@ and open the template in the editor.
                             </f:facet>
                             <h:outputText value="#{item.birthPlaceAr}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="BirthPlaceAr"/>
-                            </f:facet>
-                            <h:outputText value="#{item.photo}"/>
-                        </p:column>
+                        
                     </p:dataTable>
                 </h:form>
             </f:view>

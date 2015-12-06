@@ -107,6 +107,10 @@ public class Student implements Serializable {
     @Lob
     @Column(name = "photo", nullable = true)
     private byte[] photo;
+    @Size(max = 255)
+    @Column(name = "email", nullable = true)
+    private String email;
+    
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "std_fk", referencedColumnName="id_student")
@@ -115,11 +119,12 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(Long cne, String cin, String firstName, String lastName2) {
+    public Student(Long cne, String cin, String firstName, String lastName1, byte [] photo) {
         this.cne = cne;
         this.cin = cin;
         this.firstName = firstName;
-        this.lastName2 = lastName2;
+        this.lastName1 = lastName1;
+        this.photo = photo;
     }
 
     public Long getIdStudent() {
@@ -242,6 +247,16 @@ public class Student implements Serializable {
         this.birthPlaceAr = birthPlaceAr;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    
     public List<Files> getFilesList() {
         return filesList;
     }

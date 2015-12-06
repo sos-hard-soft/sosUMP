@@ -10,7 +10,7 @@
     </properties>
   </persistence-unit>
   <persistence-unit name="apoPU" transaction-type="JTA">
-    <jta-data-source>jdbcOracle/apoprod</jta-data-source>
+    <jta-data-source>jdbc/sample</jta-data-source>
     <class>com.sos.ump.scolarite.model.apogee.Academie</class>
     <class>com.sos.ump.scolarite.model.apogee.Adresse</class>
     <class>com.sos.ump.scolarite.model.apogee.AideFinanciere</class>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Student ID Card</title>
+        <meta name="author" content="mabs"></meta>
+        <h:outputStylesheet library="css" name="card.css" />
+    </h:head>
+    <h:body>
+        <div id="front">
+            <div id="nom">
+                #{stdController.current.firstName} #{stdController.current.lastName1}
+            </div>
+            <div id="photo">
+                <p:graphicImage rendered="#{not empty stdController.current.photo}"
+                                value="#{stdController.byteToImage(stdController.current.photo)}" />
+                
+            </div>
+            
+        </div>
+    </h:body>
+</html>

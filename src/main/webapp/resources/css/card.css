@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 nov. 2015, 20 nov. 2015 20:44:05
+    Author     : mabsalhi.sos
+*/
+
+html {
+    /* off-white, so body edge is visible in browser */
+    background: #eee;
+}
+
+body {
+    /* A5 dimensions */
+    height: 400px;
+    width: 85.60mm;
+    margin: 0;
+    
+    }
+
+/* fill half the height with each face */
+
+#front{
+	width: 320px;
+	height: 200px;
+	background-image: url("#{resource['images:background.jpg']}");
+}
+#nom{
+	height:25px;
+	width:200px;
+	margin-left:10px;
+	margin-bottom:5px;
+	font-size: 10px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        float: left;
+}
+
+#photo{
+    width: 75px;
+    height: 95px;
+    margin-top: 20px;
+    margin-right: 10px;
+    float: left;
+}
+#photo img{
+    width: 75px;
+    height: 95px;
+}

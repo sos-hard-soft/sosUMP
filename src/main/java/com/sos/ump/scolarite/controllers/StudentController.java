@@ -24,6 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
+import javax.faces.FacesException;
+import javax.faces.context.FacesContext;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
@@ -51,6 +53,8 @@ public class StudentController implements Serializable {
     private Individu apoStudent = new Individu();
     
     private List<Student> studentList = new ArrayList<>();
+    
+    
     
     /**
      * Business Methods
@@ -114,22 +118,52 @@ public class StudentController implements Serializable {
             }
     }
     
-    
-    public String doEdit(){
-        studentService.edit(current);
-        return "/student/list?faces-redirect=true";
+    public void showCard() throws IOException, FacesException {
+        
+                
+        System.out.println(current.getFirstName());
+        FacesContext.getCurrentInstance().getExternalContext()
+                .redirect("/sosUMP/reportDispatcher/?reportId=carte.odt&nom=" 
+                        + current.getFirstName() 
+                        + "&prenom=" + current.getLastName1()
+                        + "&cne=" + current.getCne()
+                        + "&cin=" + current.getCin()
+                        + "&photo=" + current.getPhoto()
+                        + "");
     }
     
     
+    public String longToString(Long data){
+        String value = Long.toString(data);
+        return value;
+    }
+    
+    
+    public String doEdit(){
+        studentService.edit(current);
+        current = null;
+        return "/student/list?faces-redirect=true";
+    }
+    
+    public String showCardID(){
+        String codeApo;
+        //current = item;
+        codeApo = Long.toString(current.getCodApo());
+        return "/student/card?faces-redirect=true";
+    }
     public void handleFileUpload(FileUploadEvent event) throws IOException {
 
         UploadedFile file = event.getFile();
         System.out.println(file.getFileName());
-
-        byte[] foto = IOUtils.toByteArray(file.getInputstream());
-        System.out.println(foto);
-
-        current.setPhoto(foto);
+        try {
+            byte[] foto = IOUtils.toByteArray(file.getInputstream());
+            System.out.println(foto);
+            current.setPhoto(foto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
  //application code
     }
 

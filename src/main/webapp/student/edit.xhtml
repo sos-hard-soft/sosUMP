@@ -30,61 +30,56 @@ and open the template in the editor.
                 .
             </b:well>
             <h:form enctype="multipart/form-data">
-                <p:outputLabel value="photo Actuelle :"/>
-                <p:graphicImage height="180" width="180" rendered="#{not empty stdController.current.photo}" value="#{stdController.byteToImage(stdController.current.photo)}" />
-        <br />
-        
-        <p:outputLabel value="Si vous :" />
-            <p:fileUpload fileUploadListener="#{stdController.handleFileUpload}" />
-            <p:growl id="messages" showDetail="true"/>
-    </h:form> 
+                <b:panelGrid colSpans="2,3,3,4">
+                    <p:outputLabel value="photo Actuelle :"/>
+                    <p:graphicImage height="180" width="180" rendered="#{not empty stdController.current.photo}" value="#{stdController.byteToImage(stdController.current.photo)}" />
+                    <p:outputLabel value="Pour charger une Photo, ou mettre a jour l'existente, cliquez sur choose. Quand votre Photo s'affiche cliquez sur Upload pour la charger :" />
+                    <p:fileUpload fileUploadListener="#{stdController.handleFileUpload}" />
+                </b:panelGrid>
+
+                <p:growl id="messages" showDetail="true"/>
+            </h:form> 
             <h:form>
                 <b:row styleClass="show-grid">
                     <b:column col-xs="6" col-sm="4" col-md="4">
-                        <h:outputLabel value="CNE : #{stdController.current.cne} :  الرقـم الوطني للطالب"/>
+                        <h:commandLink value="CNE : #{stdController.current.cne} :  الرقـم الوطني للطالب" action="#{stdController.showCard}"/>
                     </b:column>
                     <b:column col-xs="6" col-sm="4" col-md="4">
-                        <h:outputLabel value="Code Apogée : #{stdController.current.codApo} : رقـم الطالب "/>
+                        <h:commandLink value="Code Apogée : #{stdController.current.codApo} : رقـم الطالب " action="#{stdController.showCardID}"/>
                     </b:column>
                     <b:column col-xs="6" col-sm="4" col-md="4">
                         <h:outputLabel value="CIN : #{stdController.current.cin}  :رقـم بطـاقة التعريف الوطنية "/>
                     </b:column>
                 </b:row>
 
-                <b:row styleClass="show-grid">
-                    <b:column col-xs="6" col-sm="4" col-md="4">
-                        Nom : <p:inputText id="fname" value="#{stdController.current.firstName}"/>
-                    </b:column>
-                    <b:column col-xs="6" col-sm="4" col-md="4" offset="3">
-                        <p:inputText id="fNameAr" value="#{stdController.current.f_name_ar}" dir="rtl"/>
-                        الإســم الـعائـلي : 
-                    </b:column>
-                </b:row>
-                <b:row styleClass="show-grid">
-                    <b:column col-xs="6" col-sm="4" col-md="4">
-                        Prénom :
-                        <p:inputText id="lName" value="#{stdController.current.lastName1}"/>
-                    </b:column>
-                    <b:column col-xs="6" col-sm="4" col-md="4" offset="3">
-                        <p:inputText id="lNameAr" value="#{stdController.current.l_name_ar}" dir="rtl"/>
-                        الإســم الشخـصـي :
-                    </b:column>
-                </b:row>
-                <b:row styleClass="show-grid">
-                    <b:column col-xs="6" col-sm="8" col-md="8">
-                        <p>Lieu et Date de naissance : 
-                            <p:inputText id="birthPlaceFr" value="#{stdController.current.birthPlace}"/>
+                <b:panelGrid colSpans="2,5,3,2">
+                    <p:outputLabel value="Nom"/>
+                    <p:inputText id="fname" value="#{stdController.current.firstName}"/>
+                    <p:inputText id="fNameAr" value="#{stdController.current.f_name_ar}" dir="rtl"/>
+                    <p:outputLabel value="الإســم الـعــائـلــي   :" dir="rtl" />
+                    <p:outputLabel value="Prénom"/>
+                    <p:inputText id="lName" value="#{stdController.current.lastName1}"/>
+                    <p:inputText id="lNameAr" value="#{stdController.current.l_name_ar}" dir="rtl"/>
+                    <p:outputLabel value="الإســم الشـخـصـي : " dir="rtl" />
+                    <p:outputLabel value="Deuxième Prénom"/>
+                    <p:inputText id="lName2" value="#{stdController.current.lastName2}"/>
+                </b:panelGrid>
 
-                            <p:inputText id="birthPlaceAr" value="#{stdController.current.birthPlaceAr}"/>
+                <b:panelGrid colSpans="2,3,2,3,2">
+                    <p:outputLabel value="Lieu de naissance"/>
+                    <p:inputText id="lieuNaissance" value="#{stdController.current.birthPlace}"/>
+                    <b:datepicker id="birthDate" mode="popup-icon" value="#{stdController.current.dateOfBirth}" />
+                    <p:inputText id="lieuNaissanceAr" value="#{stdController.current.birthPlaceAr}" dir="rtl"/>
+                    <p:outputLabel value="مـكـــان الإزديـــاد   : " dir="rtl" />
+                </b:panelGrid>
+                <b:panelGrid colSpans="3,9">
+                    <p:outputLabel value="Adresse"/>
+                    <p:inputTextarea id="adresse" value="#{stdController.current.adress}"/>
+                    <p:outputLabel value="Numéro de Téléphonne"/>
+                    <p:inputText id="phoneNumber" value="#{stdController.current.phonNumber}"/>
+                </b:panelGrid>
 
-                            <b:datepicker id="birthDate" mode="popup-icon" value="#{stdController.current.dateOfBirth}" />
-                        </p>
-                    </b:column>
-                    <b:column col-xs="6" col-sm="4" col-md="4" offset="3">
-                        <p> تــاريـخ و مكــات الإزديــاد</p>
-                    </b:column>
-                </b:row>
-                <b:commandButton value="Enregistrer" action="#{stdController.doEdit}" />
+                <b:commandButton look="primary" value="Mettre a Jour" action="#{stdController.doEdit}" />
             </h:form>
 
         </b:container>
